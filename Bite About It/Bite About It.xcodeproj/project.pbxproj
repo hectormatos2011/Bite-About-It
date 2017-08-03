@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					823AFC091F32CF2F00CCB6F8 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = CZ3K74ATMM;
 						ProvisioningStyle = Automatic;
 					};
 					823AFC1D1F32CF2F00CCB6F8 = {
@@ -414,7 +415,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CZ3K74ATMM;
 				INFOPLIST_FILE = "Bite About It/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.krakendev.Bite-About-It";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,7 +429,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CZ3K74ATMM;
 				INFOPLIST_FILE = "Bite About It/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.krakendev.Bite-About-It";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -507,6 +512,7 @@
 				823AFC341F32CF2F00CCB6F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		823AFC351F32CF2F00CCB6F8 /* Build configuration list for PBXNativeTarget "Bite About ItTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +521,7 @@
 				823AFC371F32CF2F00CCB6F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		823AFC381F32CF2F00CCB6F8 /* Build configuration list for PBXNativeTarget "Bite About ItUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +530,7 @@
 				823AFC3A1F32CF2F00CCB6F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
