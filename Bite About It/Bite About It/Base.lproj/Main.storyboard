@@ -56,6 +56,7 @@ find an awesome restaurant near you!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-503" y="82"/>
         </scene>
     </scenes>
 </document>
