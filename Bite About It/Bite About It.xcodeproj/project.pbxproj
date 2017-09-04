@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		823AFC0E1F32CF2F00CCB6F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823AFC0D1F32CF2F00CCB6F8 /* AppDelegate.swift */; };
-		823AFC101F32CF2F00CCB6F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823AFC0F1F32CF2F00CCB6F8 /* ViewController.swift */; };
 		823AFC131F32CF2F00CCB6F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 823AFC111F32CF2F00CCB6F8 /* Main.storyboard */; };
 		823AFC151F32CF2F00CCB6F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 823AFC141F32CF2F00CCB6F8 /* Assets.xcassets */; };
 		823AFC181F32CF2F00CCB6F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 823AFC161F32CF2F00CCB6F8 /* LaunchScreen.storyboard */; };
@@ -19,6 +18,7 @@
 		8286E6DB1F47EA860084895F /* FormatterCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286E6DA1F47EA860084895F /* FormatterCache.swift */; };
 		8286E6DD1F47EE560084895F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286E6DC1F47EE560084895F /* Result.swift */; };
 		8286E6DF1F47F4C00084895F /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286E6DE1F47F4C00084895F /* Endpoints.swift */; };
+		82F6EDEC1F5CD4F0007E297C /* EdLopez83ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F6EDEB1F5CD4F0007E297C /* EdLopez83ViewController.swift */; };
 		9A4C8A212BFE96E401632DC9 /* Pods_Bite_About_ItUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC24DBF5897BB75AC1B7374 /* Pods_Bite_About_ItUITests.framework */; };
 		CC8C5B4BF4B226FCBB1101EE /* Pods_Bite_About_ItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011DFC28D141FBDEB7566766 /* Pods_Bite_About_ItTests.framework */; };
 		FC0C2206355498585DA254A5 /* Pods_Bite_About_It.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6C97F45444E7F8FA9895A /* Pods_Bite_About_It.framework */; };
@@ -46,7 +46,6 @@
 		6CD9A9F9B6D0A96BDCDEDFB5 /* Pods-Bite About ItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bite About ItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bite About ItTests/Pods-Bite About ItTests.release.xcconfig"; sourceTree = "<group>"; };
 		823AFC0A1F32CF2F00CCB6F8 /* Bite About It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bite About It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		823AFC0D1F32CF2F00CCB6F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		823AFC0F1F32CF2F00CCB6F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		823AFC121F32CF2F00CCB6F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		823AFC141F32CF2F00CCB6F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		823AFC171F32CF2F00CCB6F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		8286E6DA1F47EA860084895F /* FormatterCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterCache.swift; sourceTree = "<group>"; };
 		8286E6DC1F47EE560084895F /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		8286E6DE1F47F4C00084895F /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		82F6EDEB1F5CD4F0007E297C /* EdLopez83ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdLopez83ViewController.swift; sourceTree = "<group>"; };
 		8972DEE1F2C843EDB14CAB87 /* Pods-Bite About It.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bite About It.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bite About It/Pods-Bite About It.release.xcconfig"; sourceTree = "<group>"; };
 		93C322BECBBC108DFF71570A /* Pods-Bite About ItUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bite About ItUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bite About ItUITests/Pods-Bite About ItUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1FD7BA17F376B90603ED03D /* Pods-Bite About ItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bite About ItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bite About ItTests/Pods-Bite About ItTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			children = (
 				8286E6D91F4555550084895F /* Yelp API */,
 				823AFC0D1F32CF2F00CCB6F8 /* AppDelegate.swift */,
-				823AFC0F1F32CF2F00CCB6F8 /* ViewController.swift */,
+				82F6EDEB1F5CD4F0007E297C /* EdLopez83ViewController.swift */,
 				823AFC111F32CF2F00CCB6F8 /* Main.storyboard */,
 				823AFC141F32CF2F00CCB6F8 /* Assets.xcassets */,
 				823AFC161F32CF2F00CCB6F8 /* LaunchScreen.storyboard */,
@@ -484,11 +484,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				823AFC101F32CF2F00CCB6F8 /* ViewController.swift in Sources */,
 				8258ED971F57CB5200D7D421 /* APIOperation.swift in Sources */,
 				8286E6DD1F47EE560084895F /* Result.swift in Sources */,
 				823AFC0E1F32CF2F00CCB6F8 /* AppDelegate.swift in Sources */,
 				8286E6D81F4545510084895F /* Authentication.swift in Sources */,
+				82F6EDEC1F5CD4F0007E297C /* EdLopez83ViewController.swift in Sources */,
 				8286E6DF1F47F4C00084895F /* Endpoints.swift in Sources */,
 				8286E6DB1F47EA860084895F /* FormatterCache.swift in Sources */,
 			);

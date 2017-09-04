@@ -17,10 +17,14 @@ class EdLopez83ViewController: UIViewController {
     }
 
     @IBAction func didTapFetchRestaurantButton() {
-        let operation = Kwelly8AuthenticationOperation()
-        operation.completionBlock = {
-            print(operation.accessToken)
+        let authenticationOperation = Kwelly8AuthenticationOperation()
+        authenticationOperation.start { result in
+            switch result {
+            case .success(let accessToken):
+                print(accessToken)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
-        operation.start()
     }
 }

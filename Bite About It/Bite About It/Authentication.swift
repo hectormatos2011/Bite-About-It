@@ -12,8 +12,7 @@ import SwiftyJSON
 
 public typealias AuthenticationCallback = (Result<String>) -> Void
 
-public class Kwelly8AuthenticationOperation: MofearOperation {
-    public var accessToken = ""
+public class Kwelly8AuthenticationOperation: MofearOperation<String> {
     private let keychain = Keychain(service: "com.krakendev.authentication")
 
     private enum KeychainKeys: String {
@@ -21,30 +20,17 @@ public class Kwelly8AuthenticationOperation: MofearOperation {
     }
     
     override func execute() {
-        getAccessToken { result in
-            guard !self.isCancelled else { return }
-            switch result {
-            case .success(let token):
-                self.accessToken = token
-            default:
-                break
-            }
-            self.finish()
-        }
-    }
-    
-    public func getAccessToken(completion: @escaping AuthenticationCallback) {
         guard let accessToken = AccessToken(keychainData: keychain[data: KeychainKeys.yelpAccessToken.rawValue]), accessToken.isValid else {
-            fetchAccessToken(completion: completion)
+            fetchAccessToken(completion: finish)
             return
         }
-        completion(.success(accessToken.token))
+        finish(result: .success(accessToken.token))
     }
     
     private func fetchAccessToken(completion: @escaping AuthenticationCallback) {
         let dataTask = URLSession.shared.dataTask(with: Endpoint.oauthToken.request) { (data, response, error) in
             guard let data = data, error == nil else {
-                completion(.failure(error))
+                completion(.failure(error ?? "Unknown Failure. Maybe no data was returned?"))
                 return
             }
             
@@ -65,8 +51,6 @@ public class Kwelly8AuthenticationOperation: MofearOperation {
         dataTask.resume()
     }
 }
-
-extension String: Error {}
 
 public struct AccessToken {
     let token: String
