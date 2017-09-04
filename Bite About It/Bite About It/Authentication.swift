@@ -12,15 +12,26 @@ import SwiftyJSON
 
 public typealias AuthenticationCallback = (Result<String>) -> Void
 
-public class Authentication {
-    public static let shared = Authentication()
+public class Kwelly8AuthenticationOperation: MofearOperation {
+    public var accessToken = ""
     private let keychain = Keychain(service: "com.krakendev.authentication")
 
     private enum KeychainKeys: String {
         case yelpAccessToken
     }
     
-    private init() {}
+    override func execute() {
+        getAccessToken { result in
+            guard !self.isCancelled else { return }
+            switch result {
+            case .success(let token):
+                self.accessToken = token
+            default:
+                break
+            }
+            self.finish()
+        }
+    }
     
     public func getAccessToken(completion: @escaping AuthenticationCallback) {
         guard let accessToken = AccessToken(keychainData: keychain[data: KeychainKeys.yelpAccessToken.rawValue]), accessToken.isValid else {
@@ -94,9 +105,6 @@ public struct AccessToken {
         }
     }
 }
-
-
-
 
 
 

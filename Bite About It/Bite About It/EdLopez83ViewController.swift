@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class EdLopez83ViewController: UIViewController {
     @IBOutlet weak var restaurantLabel: UILabel!
     var anotherView = UIView()
 
@@ -17,13 +17,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapFetchRestaurantButton() {
-        Authentication.shared.getAccessToken { result in
-            switch result {
-            case .success(let token):
-                print(token)
-            case .failure(let error):
-                print("YOU SUCK, HECTOR. LIKE, REALLY. Here's why: \(String(describing: error?.localizedDescription))")
-            }
+        let operation = Kwelly8AuthenticationOperation()
+        operation.completionBlock = {
+            print(operation.accessToken)
         }
+        operation.start()
     }
 }
