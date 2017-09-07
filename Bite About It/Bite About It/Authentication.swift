@@ -12,9 +12,12 @@ import SwiftyJSON
 
 public typealias AuthenticationCallback = (Result<String>) -> Void
 
-public class Kwelly8AuthenticationOperation: MofearOperation<String> {
+/**
+ This class is dedicated to the honorable Kwelly8. Thanks for the sub!
+ */
+public class AuthenticationOperation: APIOperation<String> {
     private let keychain = Keychain(service: "com.krakendev.authentication")
-
+    
     private enum KeychainKeys: String {
         case yelpAccessToken
     }

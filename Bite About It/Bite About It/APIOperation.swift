@@ -8,12 +8,14 @@
 
 import Foundation
 
-// MY FIRST SUB, YO
-public class MofearOperation<T>: Operation {
+/** MY FIRST SUB, YO. FREAKING THANK YOU, MOFEAR. This superclass of all superclasses is dedicated to you.
+ */
+
+public class APIOperation<SuccessType>: Operation {
     override public var isAsynchronous: Bool { return false }
     override public var isExecuting: Bool { return _executing }
     override public var isFinished: Bool { return _finished }
-    public var result: Result<T>!
+    var result: Result<SuccessType>!
     
     private var _executing = false {
         willSet { willChangeValue(forKey: "isExecuting") }
@@ -25,7 +27,7 @@ public class MofearOperation<T>: Operation {
         didSet { didChangeValue(forKey: "isFinished") }
     }
     
-    public func start(completion: @escaping (Result<T>) -> Void) {
+    public func start(completion: @escaping (Result<SuccessType>) -> Void) {
         self.completionBlock = { [weak self] in
             guard let `self` = self else {
                 completion(.failure("Operation doesn't exist"))
@@ -33,6 +35,7 @@ public class MofearOperation<T>: Operation {
             }
             completion(self.result)
         }
+        
         start()
     }
     
@@ -50,7 +53,8 @@ public class MofearOperation<T>: Operation {
         fatalError("The function execute() must be overriden")
     }
     
-    func finish(result: Result<T>) {
+    //Type = (Result<SuccessType>) -> Void
+    func finish(result: Result<SuccessType>) -> Void {
         self.result = result
         _executing = false
         _finished = true

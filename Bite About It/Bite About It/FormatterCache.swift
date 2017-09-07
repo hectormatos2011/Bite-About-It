@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ This is dedicated to jjbernard7!!! Thank you, my ever faithful viewer <3
+ */
 public class FormatterCache {
     static let shared = FormatterCache()
     public let accessTokenExpirationFormatter: DateFormatter
