@@ -20,9 +20,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapFetchRestaurantButton() {
-        AuthenticationOperation().start { result in
-            guard case .success(let accessToken) = result else { return }
-            print(accessToken)
+        BusinessSearchOperation().start { result in
+            guard case .success(let businesses) = result else { return }
+            print(businesses)
         }
     }
 }

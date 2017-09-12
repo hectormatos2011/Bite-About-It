@@ -8,10 +8,11 @@
 
 import Foundation
 import SwiftyJSON
+import MapKit
 
 enum Endpoint {
     case oauthToken
-    case location
+    case businessSearch(CLLocationCoordinate2D)
     
     var request: URLRequest {
         var endpointRequest = URLRequest(url: url)
@@ -19,20 +20,27 @@ enum Endpoint {
         endpointRequest.httpBody = requestBody
         return endpointRequest
     }
+
+    func authenticatedRequest(with accessToken: String) -> URLRequest {
+        var endpointRequest = request
+        let requestURL = endpointRequest.url!.appendingPathComponent("access_token=\(accessToken)")
+        print(requestURL)
+        return endpointRequest
+    }
     
     private var url: URL {
         switch self {
         case .oauthToken:
             return URL(string: "https://api.yelp.com/oauth2/token")!
-        case .location:
-            return URL(string: "")!
+        case .businessSearch(let coordinate):
+            return URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(coordinate.latitude)&longitude=\(coordinate.longitude)&price=1,2,3")!
         }
     }
 
     private var requestMethod: RequestMethod {
         switch self {
         case .oauthToken:   return .POST
-        case .location:     return .GET
+        case .businessSearch:     return .GET
         }
     }
     
@@ -41,7 +49,7 @@ enum Endpoint {
         case .oauthToken:
             let body = "grant_type=client_credentials&client_id=QbC-Ihegy7vTSj57N7SzxA&client_secret=nNUNGym1XRPNigfvYQtTgtZnUUHwBgEhBc97UsCKzI6iP7Nm9hri6DX8Gy3DkWVJ"
             return body.data(using: .utf8)
-        case .location: return nil
+        case .businessSearch: return nil
         }
     }
 }
