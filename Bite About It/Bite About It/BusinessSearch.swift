@@ -8,22 +8,25 @@
 
 import Foundation
 import MapKit
+import SwiftyJSON
 
 public typealias BusinessCallback = (Result<[Business]>) -> Void
+
+// This class is dedicated to the very lovely Ceaira! YOU'RE AMAZING AND THE BEST PERSON EVER GAH
 public class BusinessSearchOperation: APIOperation<[Business]> {
     override func execute() {
-        AuthenticationOperation().start { [weak self] result in
-            switch result {
+        AuthenticationOperation().start { authResult in
+            switch authResult {
             case .success(let accessToken):
-                
+                self.fetchBusinesses(with: accessToken, completion: self.finish)
             case .failure(let error):
-                self?.finish(result: .failure(error))
+                self.finish(result: .failure(error))
             }
         }
     }
     
     private func fetchBusinesses(with accessToken: String, completion: @escaping BusinessCallback) {
-        let dataTask = URLSession.shared.dataTask(with: Endpoint.businessSearch(CLLocationCoordinate2D(latitude: 37.7749, longitude: 122.4194)).authenticatedRequest(with: accessToken)) { (data, response, error) in
+        let dataTask = URLSession.shared.dataTask(with: Endpoint.businessSearch(CLLocationCoordinate2D(latitude: 37.7749, longitude: 122.4194)).authenticated(with: accessToken)) { (data, response, error) in
             guard let data = data, error == nil else {
                 completion(.failure(error ?? "Unknown Failure. Maybe no data was returned?"))
                 return
@@ -31,66 +34,14 @@ public class BusinessSearchOperation: APIOperation<[Business]> {
             
             // response JSON
             let json = JSON(data: data)
-            print(jonnyman9)
-            if let errorDescription = jonnyman9["error"]["description"].string {
+            if let errorDescription = json["error"]["description"].string {
                 completion(.failure(errorDescription))
             } else {
-                let accessTokenString = jonnyman9["access_token"].stringValue
-                let accessTokenExpirationSeconds = jonnyman9["expires_in"].intValue
-                let expirationDate = Date().addingTimeInterval(TimeInterval(accessTokenExpirationSeconds))
-                let accessToken = AccessToken(token: accessTokenString, expiration: expirationDate)
-                self.keychain[data: KeychainKeys.yelpAccessToken.rawValue] = accessToken.dataValue
-                
-                completion(.success(accessTokenString))
+                completion(.success(json["businesses"].arrayValue.flatMap(Business.init(json:))))
             }
         }
         dataTask.resume()
     }
 }
-
-public struct AccessToken {
-    let token: String
-    let expiration: Date
-    
-    enum Keys: String {
-        case token
-        case expiration
-    }
-    
-    var isValid: Bool {
-        return Date() < expiration
-    }
-    
-    var dataValue: Data? {
-        return try? JSON([
-            Keys.token.rawValue : token,
-            Keys.expiration.rawValue : FormatterCache.shared.accessTokenExpirationFormatter.string(from: expiration)
-            ]).rawData()
-    }
-    
-    init(token: String, expiration: Date) {
-        self.token = token
-        self.expiration = expiration
-    }
-    
-    init?(keychainData: Data?) {
-        guard let data = keychainData else { return nil }
-        
-        let json = JSON(data: data)
-        if json.type == .dictionary {
-            self.token = json[Keys.token.rawValue].stringValue
-            self.expiration = FormatterCache.shared.accessTokenExpirationFormatter.date(from: json[Keys.expiration.rawValue].stringValue) ?? Date()
-        } else {
-            return nil
-        }
-    }
-}
-
-
-
-
-
-
-
 
 

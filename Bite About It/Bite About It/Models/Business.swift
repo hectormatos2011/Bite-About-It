@@ -7,7 +7,13 @@
 //
 
 import Foundation
+import SwiftyJSON
 
+/**
+ This is dedicated to tandjaoul! Thanks FOR THE SUB!!!!! HYPE
+ */
 public struct Business {
-    
+    init(json: JSON) {
+        print("AYYY \(json)")
+    }
 }

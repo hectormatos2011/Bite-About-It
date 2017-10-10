@@ -1,5 +1,5 @@
 PODS:
-  - KeychainAccess (3.0.2)
+  - KeychainAccess (3.1.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
@@ -7,7 +7,7 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
+  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
 PODFILE CHECKSUM: 9c4b9f960519ea8666082478b2c37b380e74ab59
