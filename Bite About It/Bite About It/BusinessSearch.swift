@@ -26,7 +26,7 @@ public class BusinessSearchOperation: APIOperation<[Business]> {
     }
     
     private func fetchBusinesses(with accessToken: String, completion: @escaping BusinessCallback) {
-        let dataTask = URLSession.shared.dataTask(with: Endpoint.businessSearch(CLLocationCoordinate2D(latitude: 37.7749, longitude: 122.4194)).authenticated(with: accessToken)) { (data, response, error) in
+        let dataTask = URLSession.shared.dataTask(with: Endpoint.businessSearch(CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)).authenticatedRequest(with: accessToken)) { (data, response, error) in
             guard let data = data, error == nil else {
                 completion(.failure(error ?? "Unknown Failure. Maybe no data was returned?"))
                 return

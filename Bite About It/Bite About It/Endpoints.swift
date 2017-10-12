@@ -21,7 +21,7 @@ enum Endpoint {
         return endpointRequest
     }
     
-    func authenticated(with accessToken: String) -> URLRequest {
+    func authenticatedRequest(with accessToken: String) -> URLRequest {
         var authenticatedRequest = request
         authenticatedRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         return authenticatedRequest
@@ -32,7 +32,7 @@ enum Endpoint {
         case .oauthToken:
             return URL(string: "https://api.yelp.com/oauth2/token")!
         case .businessSearch(let coordinate):
-            return URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(coordinate.latitude)&longitude=\(coordinate.longitude)")!
+            return URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(coordinate.latitude)&longitude=\(coordinate.longitude)&access_token=alkjdhf987263kjbaoid7fy2o8")!
         }
     }
 
