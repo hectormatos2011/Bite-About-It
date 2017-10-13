@@ -18,6 +18,7 @@
 		82620F6A1F6835DB0007E48C /* BusinessSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82620F691F6835DB0007E48C /* BusinessSearch.swift */; };
 		82620F711F6837220007E48C /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82620F701F6837220007E48C /* AccessToken.swift */; };
 		82620F731F6837C40007E48C /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82620F721F6837C40007E48C /* Business.swift */; };
+		826D8FFB1F90702C008DD666 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D8FFA1F90702C008DD666 /* PaymentMethod.swift */; };
 		8286E6D81F4545510084895F /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286E6D71F4545510084895F /* Authentication.swift */; };
 		8286E6DB1F47EA860084895F /* FormatterCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286E6DA1F47EA860084895F /* FormatterCache.swift */; };
 		8286E6DD1F47EE560084895F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286E6DC1F47EE560084895F /* Result.swift */; };
@@ -65,6 +66,7 @@
 		82620F691F6835DB0007E48C /* BusinessSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessSearch.swift; sourceTree = "<group>"; };
 		82620F701F6837220007E48C /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		82620F721F6837C40007E48C /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		826D8FFA1F90702C008DD666 /* PaymentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		8286E6D71F4545510084895F /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		8286E6DA1F47EA860084895F /* FormatterCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterCache.swift; sourceTree = "<group>"; };
 		8286E6DC1F47EE560084895F /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				82620F701F6837220007E48C /* AccessToken.swift */,
 				82620F721F6837C40007E48C /* Business.swift */,
 				824EFC1F1F8F2E86000A65A7 /* Category.swift */,
+				826D8FFA1F90702C008DD666 /* PaymentMethod.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				8286E6D81F4545510084895F /* Authentication.swift in Sources */,
 				82F6EDEC1F5CD4F0007E297C /* ViewController.swift in Sources */,
 				8286E6DF1F47F4C00084895F /* Endpoints.swift in Sources */,
+				826D8FFB1F90702C008DD666 /* PaymentMethod.swift in Sources */,
 				8286E6DB1F47EA860084895F /* FormatterCache.swift in Sources */,
 				824EFC201F8F2E86000A65A7 /* Category.swift in Sources */,
 			);

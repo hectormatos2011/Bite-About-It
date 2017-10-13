@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import MapKit
 
 /**
  This is dedicated to tandjaoul! Thanks FOR THE SUB!!!!! HYPE
@@ -16,8 +17,20 @@ public struct Business {
     let id: String
     let isClosed: Bool
     let categories: [Category]
+    let rating: Float
+    let phoneNumber: String
+    let phoneNumberDisplay: String
+    let imageURL: URL
+    let pageURL: URL
+    let coordinate: CLLocationCoordinate2D
+    let transactionMethod: TransactionMethod
     
     init(json: JSON) {
+        id = json["id"].stringValue
+        isClosed = json["is_closed"].boolValue
+        categories = json["categories"].arrayValue.flatMap(Category.init(json:))
+        rating = json["rating"].floatValue
+        phoneNumber = json["phone_number"]
         /*
          {
          "id" : "pink-onion-san-francisco",
