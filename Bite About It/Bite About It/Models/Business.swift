@@ -20,8 +20,8 @@ public struct Business {
     let rating: Float
     let phoneNumber: String
     let phoneNumberDisplay: String
-    let imageURL: URL
-    let pageURL: URL
+    let imageURL: URL?
+    let pageURL: URL?
     let coordinate: CLLocationCoordinate2D
     let transactionMethod: TransactionMethod
     
@@ -30,56 +30,21 @@ public struct Business {
         isClosed = json["is_closed"].boolValue
         categories = json["categories"].arrayValue.flatMap(Category.init(json:))
         rating = json["rating"].floatValue
-        phoneNumber = json["phone_number"]
-        /*
-         {
-         "id" : "pink-onion-san-francisco",
-         "is_closed" : false,
-         "review_count" : 78,
-         "categories" : [
-         {
-         "alias" : "pizza",
-         "title" : "Pizza"
-         },
-         {
-         "alias" : "italian",
-         "title" : "Italian"
-         },
-         {
-         "alias" : "gastropubs",
-         "title" : "Gastropubs"
-         }
-         ],
-         "rating" : 4.5,
-         "phone" : "+14155292635",
-         "image_url" : "https:\/\/s3-media3.fl.yelpcdn.com\/bphoto\/8GtQUJi_GHlrng88Mv9TOQ\/o.jpg",
-         "url" : "https:\/\/www.yelp.com\/biz\/pink-onion-san-francisco?adjust_creative=QbC-Ihegy7vTSj57N7SzxA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=QbC-Ihegy7vTSj57N7SzxA",
-         "display_phone" : "(415) 529-2635",
-         "price" : "$$",
-         "location" : {
-         "display_address" : [
-         "64 14th St",
-         "San Francisco, CA 94103"
-         ],
-         "city" : "San Francisco",
-         "address1" : "64 14th St",
-         "zip_code" : "94103",
-         "country" : "US",
-         "address3" : "",
-         "state" : "CA",
-         "address2" : null
-         },
-         "coordinates" : {
-         "longitude" : -122.41482000000001,
-         "latitude" : 37.768709999999999
-         },
-         "transactions" : [
-         "pickup",
-         "restaurant_reservation"
-         ],
-         "distance" : 789.16062948599995,
-         "name" : "Pink Onion"
-         }
-         */
+        phoneNumber = json["phone"].stringValue
+        phoneNumberDisplay = json["display_phone"].stringValue
+        imageURL = URL(string: json["image_url"].stringValue)
+        pageURL = URL(string: json["url"].stringValue)
+        coordinate = CLLocationCoordinate2D(
+            latitude: CLLocationDegrees(json["latitude"].floatValue),
+            longitude: CLLocationDegrees(json["longitude"].floatValue)
+        )
+
+        var newMethod: TransactionMethod = .none
+        if let methodStrings = json["transactions"].arrayObject as? [String] {
+            for transactionMethodString in methodStrings {
+                newMethod.insert(.methodFrom(string: transactionMethodString))
+            }
+        }
+        transactionMethod = newMethod
     }
 }

@@ -15,9 +15,23 @@ public struct TransactionMethod: OptionSet {
         self.rawValue = rawValue
     }
     
+    public static let none =           TransactionMethod(rawValue: 0)
     public static let pickup =         TransactionMethod(rawValue: 1)
     public static let delivery =       TransactionMethod(rawValue: 1 << 1)
     public static let reservation =    TransactionMethod(rawValue: 1 << 2)
+    
+    public static func methodFrom(string: String) -> TransactionMethod {
+        switch string {
+        case "pickup":
+            return .pickup
+        case "delivery":
+            return .delivery
+        case "restaurant_reservation":
+            return .reservation
+        default:
+            return .none
+        }
+    }
 }
 
 
