@@ -179,11 +179,11 @@
 			isa = PBXGroup;
 			children = (
 				8286E6D71F4545510084895F /* Authentication.swift */,
-				82620F691F6835DB0007E48C /* BusinessSearch.swift */,
 				8258ED961F57CB5200D7D421 /* APIOperation.swift */,
 				8286E6DA1F47EA860084895F /* FormatterCache.swift */,
 				8286E6DC1F47EE560084895F /* Result.swift */,
 				8286E6DE1F47F4C00084895F /* Endpoints.swift */,
+				82620F691F6835DB0007E48C /* BusinessSearch.swift */,
 			);
 			name = "Yelp API";
 			sourceTree = "<group>";
