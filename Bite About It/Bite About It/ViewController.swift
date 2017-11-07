@@ -15,7 +15,6 @@ import CoreLocation
 class ViewController: UIViewController {
     @IBOutlet weak var restaurantLabel: UILabel!
     let locationManager = CLLocationManager()
-    var currentCoordinate = CLLocationCoordinate2D()
     var buttonWasTapped = false
 
     override final func viewDidLoad() {
@@ -41,9 +40,18 @@ class ViewController: UIViewController {
     }
     
     func startBusinessFetch(with location: CLLocationCoordinate2D) {
-        BusinessSearchOperation(coordinate: currentCoordinate).start { result in
-            guard case .success(let businesses) = result else { return }
-            print(businesses)
+        BusinessSearchOperation(coordinate: location).start { result in
+            guard case .success(let businesses) = result, !businesses.isEmpty else { return }
+            var highestRated: [Business] = []
+            for (index, business) in businesses.enumerated() {
+                guard index < 25 else { break }
+                highestRated.append(business)
+            }
+            let randomIndex = Int(arc4random_uniform(UInt32(highestRated.count)))
+            let chosenBusiness = highestRated[randomIndex]
+            DispatchQueue.main.async {
+                self.restaurantLabel.text = chosenBusiness.name
+            }
         }
     }
 }
@@ -56,8 +64,7 @@ extension ViewController: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentCoordinate = locations.last?.coordinate ?? currentCoordinate
-        startBusinessFetch(with: currentCoordinate)
+        startBusinessFetch(with: locations.last?.coordinate ?? CLLocationCoordinate2D())
         manager.stopUpdatingLocation()
     }
 }

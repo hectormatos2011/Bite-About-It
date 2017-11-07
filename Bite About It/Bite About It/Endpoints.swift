@@ -32,7 +32,7 @@ enum Endpoint {
         case .oauthToken:
             return URL(string: "https://api.yelp.com/oauth2/token")!
         case .businessSearch(let coordinate):
-            return URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(coordinate.latitude)&longitude=\(coordinate.longitude)&access_token=alkjdhf987263kjbaoid7fy2o8")!
+            return URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(coordinate.latitude)&longitude=\(coordinate.longitude)&limit=50&sort_by=rating&categories=acaibowls,bento,chimneycakes,churros,desserts,donuts,empanadas,friterie,icecream,importedfood,jpsweets,taiyaki,panzerotti,poke,smokehouse,gourmet,macarons,streetvendors,zapiekanka")!
         }
     }
 

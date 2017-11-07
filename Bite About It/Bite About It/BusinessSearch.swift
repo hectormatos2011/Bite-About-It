@@ -45,10 +45,16 @@ public class BusinessSearchOperation: APIOperation<[Business]> {
             if let errorDescription = json["error"]["description"].string {
                 completion(.failure(errorDescription))
             } else {
-                completion(.success(json["businesses"].arrayValue.flatMap(Business.init(json:))))
+                let businessesJson = json["businesses"].arrayValue
+                let businesses = businessesJson.flatMap(Business.init(json:))
+                completion(.success(businesses))
             }
         }
         dataTask.resume()
     }
 }
+
+
+
+
 
