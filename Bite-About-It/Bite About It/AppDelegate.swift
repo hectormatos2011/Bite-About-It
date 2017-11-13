@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol AutoCases {}
+public protocol AutoEquatable {}
+public protocol AutoHashable {}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?

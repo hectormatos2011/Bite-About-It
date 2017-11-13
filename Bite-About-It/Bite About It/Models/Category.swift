@@ -9,10 +9,8 @@
 import Foundation
 import SwiftyJSON
 
-public protocol Templateable {}
-
 // This struct is dedicated to CratyDeanoUK! Thanks for the sub and I'm sorry for the booty shake 😜
-public enum Category: Templateable {
+public enum Category: AutoCases {
     case breakfast
     case lunch
     case dinner

@@ -9,7 +9,7 @@
 import Foundation
 
 // This is dedicated to drewklayman! THANKS FOR THE SUB, YO!
-public struct TransactionMethod: OptionSet {
+public struct TransactionMethod: OptionSet, AutoEquatable {
     public let rawValue: UInt
     public init(rawValue: UInt) {
         self.rawValue = rawValue

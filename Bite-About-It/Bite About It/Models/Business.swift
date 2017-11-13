@@ -8,14 +8,12 @@
 
 import Foundation
 import SwiftyJSON
-import MapKit
+import CoreLocation
 
 /**
  This is dedicated to tandjaoul! Thanks FOR THE SUB!!!!! HYPE
  */
-typealias BusinessCategory = (alias: String, title: String)
-
-public struct Business: Comparable, CustomStringConvertible {
+public struct Business: AutoEquatable, Comparable, CustomStringConvertible {
     let id: String
     let name: String
     let isClosed: Bool
@@ -44,7 +42,7 @@ public struct Business: Comparable, CustomStringConvertible {
         categories = json["categories"].arrayValue.flatMap {
             let alias = $0["alias"].stringValue
             let title = $0["title"].stringValue
-            return (alias, title)
+            return BusinessCategory(alias: alias, title: title)
         }
         coordinate = CLLocationCoordinate2D(
             latitude: CLLocationDegrees(json["latitude"].floatValue),
@@ -63,8 +61,15 @@ public struct Business: Comparable, CustomStringConvertible {
     public static func <(lhs: Business, rhs: Business) -> Bool {
         return lhs.rating < rhs.rating
     }
-    
-    public static func ==(lhs: Business, rhs: Business) -> Bool {
-        return lhs.id == rhs.id
+}
+
+public struct BusinessCategory: AutoEquatable {
+    public let alias: String
+    public let title: String
+}
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }
