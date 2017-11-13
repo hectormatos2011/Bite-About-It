@@ -8,6 +8,7 @@ target 'Bite About It' do
   # Pods for Bite About It
   pod 'KeychainAccess'
   pod 'SwiftyJSON'
+  pod 'Sourcery'
 
   target 'Bite About ItTests' do
     inherit! :search_paths

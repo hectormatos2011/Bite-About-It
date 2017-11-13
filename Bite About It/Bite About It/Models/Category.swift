@@ -9,12 +9,14 @@
 import Foundation
 import SwiftyJSON
 
-public struct Category {
-    let alias: String
-    let title: String
-    
-    init(json: JSON) {
-        alias = json["alias"].stringValue
-        title = json["title"].stringValue
-    }
+public protocol Templateable {}
+
+// This struct is dedicated to CratyDeanoUK! Thanks for the sub and I'm sorry for the booty shake 😜
+public enum Category: Templateable {
+    case breakfast
+    case lunch
+    case dinner
+    case dessert
+    case coffee
+    case alcohol
 }

@@ -13,16 +13,18 @@ import MapKit
 /**
  This is dedicated to tandjaoul! Thanks FOR THE SUB!!!!! HYPE
  */
+typealias BusinessCategory = (alias: String, title: String)
+
 public struct Business: Comparable, CustomStringConvertible {
     let id: String
     let name: String
     let isClosed: Bool
-    let categories: [Category]
     let rating: Float
     let phoneNumber: String
     let phoneNumberDisplay: String
     let imageURL: URL?
     let pageURL: URL?
+    let categories: [BusinessCategory]
     let coordinate: CLLocationCoordinate2D
     let transactionMethod: TransactionMethod
     
@@ -34,12 +36,16 @@ public struct Business: Comparable, CustomStringConvertible {
         id = json["id"].stringValue
         name = json["name"].stringValue
         isClosed = json["is_closed"].boolValue
-        categories = json["categories"].arrayValue.flatMap(Category.init(json:))
         rating = json["rating"].floatValue
         phoneNumber = json["phone"].stringValue
         phoneNumberDisplay = json["display_phone"].stringValue
         imageURL = URL(string: json["image_url"].stringValue)
         pageURL = URL(string: json["url"].stringValue)
+        categories = json["categories"].arrayValue.flatMap {
+            let alias = $0["alias"].stringValue
+            let title = $0["title"].stringValue
+            return (alias, title)
+        }
         coordinate = CLLocationCoordinate2D(
             latitude: CLLocationDegrees(json["latitude"].floatValue),
             longitude: CLLocationDegrees(json["longitude"].floatValue)
